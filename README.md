@@ -7,6 +7,7 @@
 [x]Dockerize Mailer by creating simple dockerimage.
 
 [ ]Migrate project into Spring Cloud (add service discovery, load-balancer and so on)
+
 [ ]Add Service Discovery, API gateway
 
 [ ]Replace inMemory storage by centralized Redis image.
