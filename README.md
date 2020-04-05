@@ -2,15 +2,16 @@
 
 ## Goal list:
 
-[x] Create simple microservice "Mailer", covering basic functionality like sending and receiving mails. Without authorization, database
+[x]Create simple microservice "Mailer", covering basic functionality like sending and receiving mails. Without authorization, database
 
-[ ] Dockerize Mailer by creating simple dockerimage.
+[x]Dockerize Mailer by creating simple dockerimage.
 
-[ ] Migrate project into Spring Cloud (add service discovery, load-balancer and so on)
+[ ]Migrate project into Spring Cloud (add service discovery, load-balancer and so on)
+[ ]Add Service Discovery, API gateway
 
-[ ] Replace inMemory storage by centralized Redis image.
+[ ]Replace inMemory storage by centralized Redis image.
 
-[ ] Add permament storage like Cassandra or MongoDB (anything but noSQL)
+[ ]Add permament storage like Cassandra or MongoDB (anything but noSQL)
 
 ...
 
