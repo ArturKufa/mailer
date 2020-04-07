@@ -16,6 +16,8 @@
 
 - https://medium.com/tech-tajawal/microservice-authentication-and-authorization-solutions-e0e5e74b248a
 - https://medium.com/@arjunac009/spring-boot-microservice-with-centralized-authentication-zuul-eureka-jwt-5719e05fde29
+- Implement Auth in proxy service, using JWTConfigurer/JWTProvider (from link above)
+- Then try to replace concrete implementation of those classes by REST API calls to external Auth service. This primitive idea should force spring security to hit auth service each time it needs to verify user. Enable caching to speedup auth?
 
 [ ]Replace inMemory storage by centralized Redis image.
 
