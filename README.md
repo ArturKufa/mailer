@@ -12,7 +12,10 @@
 - Add config server and extract config from mailer-core
 - Add proxy as entrypoint to application
 
-[ ]Added auth: https://medium.com/tech-tajawal/microservice-authentication-and-authorization-solutions-e0e5e74b248a
+[ ]Added auth: 
+
+- https://medium.com/tech-tajawal/microservice-authentication-and-authorization-solutions-e0e5e74b248a
+- https://medium.com/@arjunac009/spring-boot-microservice-with-centralized-authentication-zuul-eureka-jwt-5719e05fde29
 
 [ ]Replace inMemory storage by centralized Redis image.
 
