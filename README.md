@@ -8,7 +8,9 @@
 
 [ ]Migrate project into Spring Cloud (add service discovery, load-balancer and so on)
 
-[ ]Add Service Discovery, API gateway
+- Add service discovery
+- Add config server and extract config from mailer-core
+- Add proxy as entrypoint to application
 
 [ ]Replace inMemory storage by centralized Redis image.
 
