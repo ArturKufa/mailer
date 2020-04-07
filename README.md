@@ -12,6 +12,8 @@
 - Add config server and extract config from mailer-core
 - Add proxy as entrypoint to application
 
+[ ]Added auth: https://medium.com/tech-tajawal/microservice-authentication-and-authorization-solutions-e0e5e74b248a
+
 [ ]Replace inMemory storage by centralized Redis image.
 
 [ ]Add permament storage like Cassandra or MongoDB (anything but noSQL)
