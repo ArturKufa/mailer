@@ -8,35 +8,20 @@ group = 'org.arturkufa'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+repositories {
+	mavenCentral()
 }
 
 ext {
 	set('springCloudVersion', "Hoxton.SR3")
 }
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.6.RELEASE'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	compile group: 'io.vavr', name: 'vavr', version: '0.10.2'
-
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	
-	testImplementation 'io.projectreactor:reactor-test'
-	testCompile group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
-	compile group: 'org.junit', name: 'junit5-engine', version: '5.0.0-ALPHA'
 }
 
 dependencyManagement {
