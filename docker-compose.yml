@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+  gateway:
+    image: gateway:v1
+    hostname: gateway
+    ports:
+      - "8080:8080"
+
+  mailer-core_1:
+    image: mailer-core:v1
+    ports:
+      - "8081:8081"
+    depends_on:
+      - gateway
+  mailer-core_2:
+    image: mailer-core:v1
+    ports:
+      - "8082:8081"
+    depends_on:
+      - gateway
