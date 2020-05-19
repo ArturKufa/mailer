@@ -1,13 +1,13 @@
-package org.arturkufa.mailer;
+package org.arturkufa.config;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MailerApplicationTests {
+class ConfigApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
+	@Test
+	void contextLoads() {
+	}
 
 }

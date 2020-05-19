@@ -23,6 +23,9 @@ repositories {
 }
 
 dependencies {
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '2.2.2.RELEASE'
+
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.6.RELEASE'
