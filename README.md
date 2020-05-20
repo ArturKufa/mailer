@@ -19,7 +19,7 @@
 - Implement Auth in proxy service, using JWTConfigurer/JWTProvider (from link above)
 - Then try to replace concrete implementation of those classes by REST API calls to external Auth service. This primitive idea should force spring security to hit auth service each time it needs to verify user. Enable caching to speedup auth?
 
-[ ]Replace inMemory storage by centralized Redis image.
+[ ]Replace inMemory storage by centralized Redis image. **(Write through cache using redison)**
 
 [ ]Add permament storage like Cassandra or MongoDB (anything but noSQL)
 
