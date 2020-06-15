@@ -1,6 +1,5 @@
 package org.arturkufa.mailer.api;
 
-import lombok.AllArgsConstructor;
 import org.arturkufa.mailer.api.model.ReadMailResponse;
 import org.arturkufa.mailer.api.model.SendMailRequest;
 import org.arturkufa.mailer.service.MailerService;
