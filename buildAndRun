@@ -1,0 +1,20 @@
+#!/bin/bash
+# It builds gradle, then recreate docker images and run compose
+echo "Build phase: gradle"
+./gradlew clean build
+echo "Build phase: mailer-core"
+cd mailer-core
+docker build -f Dockerfile -t mailer-core:v1 .
+echo "Build phase: config"
+cd ..
+cd config
+docker build -f Dockerfile -t config:v1 .
+echo "Build phase: gateway"
+cd ..
+cd gateway
+docker build -f Dockerfile -t gateway:v1 .
+echo "Run phase: stop all docker images"
+cd ..
+docker stop $(docker ps -a -q)
+echo "Run phase: run all docker images"
+docker-compose up
