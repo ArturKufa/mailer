@@ -1,9 +1,7 @@
 # Mailer
 
 ##How to run:
-1. run gradlew clean build to build whole project
-2. Build every image using command like: "docker build -f Dockerfile -t config:v1 ." (remember you need to be in directory with dockerfile)
-3. Run whole setup from docker-compose by using "docker-compose up"
+1. run gscript "buildAndRun"
 
 
 ## Goal list:
@@ -12,18 +10,16 @@
 
 [x]Dockerize Mailer by creating simple dockerimage.
 
-[ ]Migrate project into Spring Cloud (add service discovery, load-balancer and so on)
+[x]Migrate project into Spring Cloud (add service discovery, load-balancer and so on)
 
 - Add service discovery
 - Add config server and extract config from mailer-core
-- Add proxy as entrypoint to application
+- Add proxy as entrypoint to an application
 
-[ ]Added auth: 
+[x]Added auth: 
 
 - https://medium.com/tech-tajawal/microservice-authentication-and-authorization-solutions-e0e5e74b248a
 - https://medium.com/@arjunac009/spring-boot-microservice-with-centralized-authentication-zuul-eureka-jwt-5719e05fde29
-- Implement Auth in proxy service, using JWTConfigurer/JWTProvider (from link above)
-- Then try to replace concrete implementation of those classes by REST API calls to external Auth service. This primitive idea should force spring security to hit auth service each time it needs to verify user. Enable caching to speedup auth?
 
 [ ]Replace inMemory storage by centralized Redis image. **(Write through cache using redison)**
 
