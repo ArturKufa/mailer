@@ -1,5 +1,11 @@
 # Mailer
 
+##How to run:
+1. run gradlew clean build to build whole project
+2. Build every image using command like: "docker build -f Dockerfile -t config:v1 ." (remember you need to be in directory with dockerfile)
+3. Run whole setup from docker-compose by using "docker-compose up"
+
+
 ## Goal list:
 
 [x]Create simple microservice "Mailer", covering basic functionality like sending and receiving mails. Without authorization, database

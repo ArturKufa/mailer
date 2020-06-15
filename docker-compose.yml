@@ -6,16 +6,34 @@ services:
     hostname: gateway
     ports:
       - "8080:8080"
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+
+  config:
+    image: config:v1
+    hostname: config
+    ports:
+      - "8888:8888"
+    restart: always
+
 
   mailer-core_1:
     image: mailer-core:v1
     ports:
       - "8081:8081"
+    restart: always
     depends_on:
-      - gateway
+      config:
+        condition: service_healthy
+
   mailer-core_2:
     image: mailer-core:v1
     ports:
       - "8082:8081"
+    restart: always
     depends_on:
-      - gateway
+      config:
+        condition: service_healthy
+

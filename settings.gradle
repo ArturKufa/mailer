@@ -1,3 +1,4 @@
 rootProject.name = 'mailer'
 include 'mailer-core'
 include 'gateway'
+include 'config'
