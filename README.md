@@ -1,7 +1,7 @@
 # Mailer
 
-##How to run:
-1. run gscript "buildAndRun"
+## How to run:
+Run script "buildAndRun"
 
 
 ## Goal list:
