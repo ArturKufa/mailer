@@ -5,6 +5,10 @@ echo "Build phase: gradle"
 echo "Build phase: mailer-core"
 cd mailer-core
 docker build -f Dockerfile -t mailer-core:v1 .
+echo "Build phase: mailer-search"
+cd ..
+cd mailer-search
+docker build -f Dockerfile -t mailer-search:v1 .
 echo "Build phase: config"
 cd ..
 cd config

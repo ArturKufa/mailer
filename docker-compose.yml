@@ -18,7 +18,6 @@ services:
       - "8888:8888"
     restart: always
 
-
   mailer-core_1:
     image: mailer-core:v1
     ports:
@@ -36,4 +35,21 @@ services:
     depends_on:
       config:
         condition: service_healthy
-
+  mailer-search_1:
+    image: mailer-search:v1
+    environment:
+      TIME_DELAY: 100
+    ports:
+      - "8083:8081"
+    depends_on:
+      config:
+        condition: service_healthy
+  mailer-search_2:
+    image: mailer-search:v1
+    environment:
+      TIME_DELAY: 500
+    ports:
+      - "8084:8081"
+    depends_on:
+      config:
+        condition: service_healthy
