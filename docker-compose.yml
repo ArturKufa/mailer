@@ -38,6 +38,7 @@ services:
   mailer-search_1:
     image: mailer-search:v1
     environment:
+      ID: 1
       TIME_DELAY: 100
     ports:
       - "8083:8081"
@@ -47,7 +48,8 @@ services:
   mailer-search_2:
     image: mailer-search:v1
     environment:
-      TIME_DELAY: 500
+      ID: 2
+      TIME_DELAY: 5000
     ports:
       - "8084:8081"
     depends_on:

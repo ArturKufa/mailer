@@ -17,6 +17,15 @@ zuul:
     mailer-search:
       path: /search/**
       serviceId: mailer-search
+#      https://programming.vip/docs/spring-cloud-zuul-ribbon-and-hytrix-configuration-instructions.html
+# https://stackoverflow.com/questions/54643923/how-to-enable-hystrix-circuit-breaker-at-zuul
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
 security:
   oauth2:
     client:
