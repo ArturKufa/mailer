@@ -2,7 +2,7 @@ package org.arturkufa.importer.model;
 
 import java.io.Serializable;
 
-public class Message implements Serializable {
+public class Mail implements Serializable {
     private int messageId;
     private int senderId;
     private int receiverId;

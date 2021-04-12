@@ -1,23 +1,18 @@
 package org.arturkufa.importer;
 
-import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.CheckpointingMode;
-import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.ExecutionCheckpointingOptions;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.assigners.ProcessingTimeSessionWindows;
-import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-import org.arturkufa.importer.model.Message;
-import org.arturkufa.importer.model.User;
-import org.arturkufa.importer.serdes.MessageSerializer;
-import org.arturkufa.importer.serdes.UserSerializer;
+import org.apache.flink.table.catalog.CatalogDatabaseImpl;
+import org.apache.flink.table.catalog.GenericInMemoryCatalog;
+import org.apache.flink.table.catalog.exceptions.DatabaseAlreadyExistException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Properties;
 
 @Component
@@ -40,7 +35,22 @@ public class FlinkTableImporter {
         flinkTableEnv.getConfig().getConfiguration().set(
                 ExecutionCheckpointingOptions.CHECKPOINTING_MODE, CheckpointingMode.EXACTLY_ONCE);
         flinkTableEnv.getConfig().getConfiguration().set(
-                ExecutionCheckpointingOptions.CHECKPOINTING_INTERVAL, Duration.ofSeconds(10));
+                ExecutionCheckpointingOptions.CHECKPOINTING_INTERVAL, Duration.ofSeconds(2));
+
+        //todo domyslnie tworzony jest inMemoryCatalog
+//        GenericInMemoryCatalog inMemoryCatalog = new GenericInMemoryCatalog("inMemory");
+//        configCatalog(inMemoryCatalog);
+//        flinkTableEnv.registerCatalog("inMemory", inMemoryCatalog);
+    }
+
+    private void configCatalog(GenericInMemoryCatalog inMemoryCatalog) {
+        try {
+            inMemoryCatalog.createDatabase("db",
+                    new CatalogDatabaseImpl(new HashMap<>(), null),
+                    true);
+        } catch (DatabaseAlreadyExistException e) {
+            e.printStackTrace();
+        }
     }
 
     public void getMailDataSet() {
@@ -63,7 +73,7 @@ public class FlinkTableImporter {
                         " 'connector' = 'kafka'," +
                         " 'topic' = 'mail'," +
                         " 'properties.bootstrap.servers' = 'localhost:9093'," +
-                        " 'properties.group.id' = 'tableGroup'," +
+                        " 'properties.group.id' = 'tableGroup_2'," +
                         " 'format' = 'json'," +
                         " 'json.fail-on-missing-field' = 'false', " +
                         " 'json.ignore-parse-errors' = 'true', " +
@@ -71,7 +81,10 @@ public class FlinkTableImporter {
                         ")");
 
        // flinkTableEnv.executeSql("SELECT messageId FROM messageTable").print();
-        flinkTableEnv.sqlQuery("SELECT * FROM messageTable").execute().print();
+        //todo to gdy chce miec jawnie podany katalog
+       // flinkTableEnv.sqlQuery("SELECT * FROM inMemory.db.messageTable").execute().print();
+       flinkTableEnv.sqlQuery("SELECT * FROM messageTable").execute().print();
+        System.out.println("CATALOGS: " + flinkTableEnv.listCatalogs());
 
 
         try {

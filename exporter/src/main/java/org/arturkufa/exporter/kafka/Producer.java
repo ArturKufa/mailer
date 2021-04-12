@@ -51,7 +51,7 @@ public class Producer {
                     .forEach(this::sendRecord);
     }
 
-    public void procudeUser(List<User> userList) {
+    public void produceUser(List<User> userList) {
         userList.stream()
                 .map(this::delay)
                 .map(m -> unchecked(() -> mapper.writeValueAsString(m)))
@@ -61,7 +61,7 @@ public class Producer {
 
     private Message delay(Message msg) {
         try {
-            Thread.sleep(100);
+            Thread.sleep(10_000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
