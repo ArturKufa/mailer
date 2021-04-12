@@ -30,3 +30,17 @@ Run script "buildAndRun"
 ## Another less important stuff I want to add:
 - Add auth microservice that will work like proxy for mailer service
 - Add ELK stack for full text search
+
+## Mailer Importer
+Additional separated and independent module responsible for importing data from text files.
+There will be 2 text files:
+1. Mail - containg: id, mail-body, timestamp, source-user-id, destination-user-id
+2. User - containg: id, name
+
+Main goal of this module is to put data from files into RELATIONAL database.
+In this case, importer need to take care of scenario when Mail can't be written into db because User wasnt inserted yet.
+mail should be put aside for a while and then Importer should try to insert it once again.
+
+In the future, this relational db will be sent into Apache Kafka and then Mailer-Core will import it into noSql db
+
+Data for files will be generated from: https://restdb.io/docs/random-data-generator#restdb

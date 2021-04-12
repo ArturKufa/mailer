@@ -1,0 +1,76 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'org.arturkufa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	project.version = '1.11.2'
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.kafka:spring-kafka'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	compile group: 'io.vavr', name: 'vavr', version: '0.10.2'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testCompile group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
+	compile group: 'org.junit', name: 'junit5-engine', version: '5.0.0-ALPHA'
+//
+//	compile group: 'org.apache.flink', name: 'flink-connector-kafka_2.12', version: '1.11.2'
+//	compile group: 'org.apache.flink', name: 'flink-streaming-java_2.12', version: '1.11.2'
+//	compile group: 'org.apache.flink', name: 'flink-clients_2.12', version: '1.11.2'
+//
+//	compile group: 'org.apache.flink', name: 'flink-table-api-java', version: '1.11.2'
+//	compile group: 'org.apache.flink', name: 'flink-table-api-java-bridge_2.12', version: '1.11.2'
+//
+//	compile group: 'org.apache.flink', name: 'flink-table-planner-blink_2.11', version: '1.11.2'
+//	compile group: 'org.apache.flink', name: 'flink-table-runtime-blink_2.12', version: '1.11.2'
+//
+	compile "org.apache.flink:flink-connector-kafka_2.11:${project.version}"
+//	//providedCompile group: 'org.apache.flink', name: 'flink-streaming-scala_2.12', version: '1.11.2'
+
+	compile "com.fasterxml.jackson.core:jackson-databind:2.11.2"
+//
+//	//compile group: 'org.scala-lang', name: 'scala-library', version: '2.12.0-M1'
+//
+		compile "org.apache.flink:flink-json:${project.version}"
+		compile "org.apache.flink:flink-table-api-java-bridge_2.12:${project.version}"
+		compile "org.apache.flink:flink-table-api-scala-bridge_2.12:${project.version}"
+		compile "org.apache.flink:flink-table-planner_2.12:${project.version}"
+		compile "org.apache.flink:flink-table-planner-blink_2.12:${project.version}"
+		compile "org.apache.flink:flink-streaming-scala_2.12:${project.version}"
+		compile "org.apache.flink:flink-clients_2.12:${project.version}"
+		testCompile "org.apache.flink:flink-test-utils_2.12:${project.version}"
+	
+	
+
+
+
+
+
+
+
+}
+
+test {
+	useJUnitPlatform()
+}
